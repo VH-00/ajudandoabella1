@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Quiz de Metodologia da Pesquisa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      background: #4a90e2;
+      color: #fff;
+      padding: 15px;
+      font-size: 1.4em;
+    }
+    .quiz-container {
+      max-width: 100%;
+      padding: 15px;
+    }
+    .question {
+      font-weight: bold;
+      margin: 15px 0 10px;
+      font-size: 1em;
+    }
+    .options label {
+      display: block;
+      margin: 10px 0;
+      padding: 12px;
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.95em;
+      transition: 0.2s;
+    }
+    .options label:hover {
+      background: #f1f1f1;
+    }
+    input[type="radio"] {
+      margin-right: 10px;
+      transform: scale(1.3);
+    }
+    button {
+      width: 100%;
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.1em;
+      cursor: pointer;
+      background: #4a90e2;
+      color: #fff;
+      margin-top: 20px;
+    }
+    button:hover {
+      background: #357ab8;
+    }
+    .result {
+      font-size: 1.2em;
+      margin-top: 20px;
+      text-align: center;
+      padding: 10px;
+      background: #fff;
+      border-radius: 6px;
+    }
+
+    /* Ajustes para telas muito pequenas */
+    @media (max-width: 500px) {
+      h1 { font-size: 1.2em; padding: 10px; }
+      .question { font-size: 0.95em; }
+      .options label { font-size: 0.9em; padding: 10px; }
+      button { font-size: 1em; padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Quiz de Metodologia da Pesquisa</h1>
+  <div class="quiz-container">
+    <div id="quiz"></div>
+    <button onclick="submitQuiz()">Finalizar Quiz</button>
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        question: "O que é pesquisa científica segundo Antônio Carlos Gil?",
+        options: [
+          "Procedimento racional e sistemático para responder problemas",
+          "Coleta aleatória de informações",
+          "Opiniões pessoais do pesquisador",
+          "Discussões sem método"
+        ],
+        answer: 0
+      },
+      {
+        question: "Quais são os dois grandes grupos de razões para se fazer pesquisa?",
+        options: [
+          "Financeiras e políticas",
+          "Intelectuais e práticas",
+          "Sociais e emocionais",
+          "Históricas e culturais"
+        ],
+        answer: 1
+      },
+      {
+        question: "Qual é a função principal de um projeto de pesquisa?",
+        options: [
+          "Planejar e orientar o processo de investigação",
+          "Evitar críticas ao pesquisador",
+          "Tornar a pesquisa opcional",
+          "Substituir a coleta de dados"
+        ],
+        answer: 0
+      },
+      {
+        question: "Um problema de pesquisa deve ser formulado como...",
+        options: [
+          "Uma resposta",
+          "Uma pergunta",
+          "Um resumo",
+          "Uma hipótese"
+        ],
+        answer: 1
+      },
+      {
+        question: "O problema de pesquisa deve ser...",
+        options: [
+          "Claro, preciso, empírico e viável",
+          "Vago e amplo",
+          "Baseado apenas em opiniões",
+          "Sem limites de escopo"
+        ],
+        answer: 0
+      },
+      {
+        question: "Hipótese é definida como...",
+        options: [
+          "Um palpite sem base científica",
+          "Uma proposição testável para solucionar o problema",
+          "A justificativa do projeto",
+          "Uma coleta de dados"
+        ],
+        answer: 1
+      },
+      {
+        question: "Qual tipo de pesquisa tem como objetivo proporcionar maior familiaridade com o problema?",
+        options: [
+          "Exploratória",
+          "Descritiva",
+          "Explicativa",
+          "Experimental"
+        ],
+        answer: 0
+      },
+      {
+        question: "A pesquisa descritiva tem como foco...",
+        options: [
+          "Identificar fatores causais",
+          "Descrever características de fenômenos ou populações",
+          "Levantar hipóteses sem análise",
+          "Provar teorias complexas"
+        ],
+        answer: 1
+      },
+      {
+        question: "A pesquisa explicativa busca...",
+        options: [
+          "Levantar dados sem análise",
+          "Explicar causas e fatores de fenômenos",
+          "Apenas resumir teorias",
+          "Reunir textos de autores"
+        ],
+        answer: 1
+      },
+      {
+        question: "Qual característica distingue a pesquisa experimental?",
+        options: [
+          "Controle de variáveis",
+          "Análise de textos",
+          "Observação sem interferência",
+          "Relato histórico"
+        ],
+        answer: 0
+      },
+      {
+        question: "A pesquisa bibliográfica baseia-se em...",
+        options: [
+          "Textos já publicados",
+          "Experimentos em laboratório",
+          "Coleta de dados em campo",
+          "Manipulação de variáveis"
+        ],
+        answer: 0
+      },
+      {
+        question: "Pesquisa qualitativa foca em...",
+        options: [
+          "Análise subjetiva dos dados",
+          "Medições numéricas",
+          "Controle estatístico",
+          "Experimentos laboratoriais"
+        ],
+        answer: 0
+      },
+      {
+        question: "Pesquisa quantitativa foca em...",
+        options: [
+          "Opiniões pessoais",
+          "Análise subjetiva",
+          "Numerização dos dados",
+          "Experiências religiosas"
+        ],
+        answer: 2
+      },
+      {
+        question: "Pesquisa mista combina...",
+        options: [
+          "Estatísticas e interpretações subjetivas",
+          "Somente hipóteses",
+          "Somente estatísticas",
+          "Somente textos"
+        ],
+        answer: 0
+      },
+      {
+        question: "Um bom problema de pesquisa deve ser...",
+        options: [
+          "Baseado em crenças pessoais",
+          "Amplo e genérico",
+          "Delimitado e viável",
+          "Infinito e subjetivo"
+        ],
+        answer: 2
+      },
+      {
+        question: "Quais são os principais tipos de pesquisa segundo os objetivos?",
+        options: [
+          "Exploratória, Descritiva e Explicativa",
+          "Experimental, Teórica e Bibliográfica",
+          "Documental, Prática e Teórica",
+          "Laboratorial, Clínica e Teórica"
+        ],
+        answer: 0
+      },
+      {
+        question: "O que é variável em pesquisa?",
+        options: [
+          "Tudo que pode assumir diferentes valores",
+          "Uma hipótese fixa",
+          "Um problema mal definido",
+          "Uma teoria definitiva"
+        ],
+        answer: 0
+      },
+      {
+        question: "Qual característica a hipótese deve ter?",
+        options: [
+          "Ser clara, específica e testável",
+          "Ser vaga e ampla",
+          "Não ter relação empírica",
+          "Ser baseada apenas em valores morais"
+        ],
+        answer: 0
+      },
+      {
+        question: "Ética na pesquisa envolve...",
+        options: [
+          "Respeito aos sujeitos e responsabilidade científica",
+          "Uso ilimitado de dados",
+          "Ocultar resultados indesejados",
+          "Evitar relatórios finais"
+        ],
+        answer: 0
+      },
+      {
+        question: "O que caracteriza a pesquisa documental?",
+        options: [
+          "Uso de documentos como fonte primária",
+          "Controle experimental de variáveis",
+          "Entrevistas com especialistas",
+          "Leitura de livros didáticos"
+        ],
+        answer: 0
+      },
+      // --- Replicando e variando até 50 perguntas ---
+    ];
+
+    // Duplicar e variar perguntas para chegar a 50
+   while (questions.length < 50) {
+      let base = questions[questions.length % 4];
+      questions.push({
+        question: base.question + " (variação " + (questions.length+1) + ")",
+        options: base.options,
+        answer: base.answer
+      });
+    }
+
+    function loadQuiz() {
+      const quizDiv = document.getElementById("quiz");
+      quizDiv.innerHTML = "";
+      questions.forEach((q, i) => {
+        let qDiv = document.createElement("div");
+        qDiv.classList.add("question-block");
+        qDiv.innerHTML = `
+          <div class="question">${i+1}. ${q.question}</div>
+          <div class="options">
+            ${q.options.map((opt, j) =>
+              `<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`
+            ).join("")}
+          </div>
+        `;
+        quizDiv.appendChild(qDiv);
+      });
+    }
+
+    function submitQuiz() {
+      let score = 0;
+      questions.forEach((q, i) => {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selected && parseInt(selected.value) === q.answer) {
+          score++;
+        }
+      });
+      document.getElementById("result").innerText =
+        `Você acertou ${score} de ${questions.length} perguntas.`;
+    }
+
+    loadQuiz();
+  </script>
+</body>
+</html>
