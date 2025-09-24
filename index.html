@@ -2,49 +2,51 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Quiz de Metodologia da Pesquisa</title>
+  <title>Quiz - Metodologia da Pesquisa</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      background: #f9f9f9;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
       color: #333;
     }
     h1 {
       text-align: center;
-      background: #4a90e2;
+      padding: 20px;
       color: #fff;
-      padding: 15px;
-      font-size: 1.4em;
     }
     .quiz-container {
-      max-width: 100%;
-      padding: 15px;
+      max-width: 900px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
     .question {
       font-weight: bold;
-      margin: 15px 0 10px;
-      font-size: 1em;
+      margin: 15px 0 8px;
+      font-size: 1.05em;
     }
     .options label {
       display: block;
-      margin: 10px 0;
-      padding: 12px;
-      background: #fff;
+      margin: 6px 0;
+      padding: 10px;
+      background: #f9f9f9;
       border: 1px solid #ddd;
-      border-radius: 6px;
+      border-radius: 8px;
       cursor: pointer;
-      font-size: 0.95em;
-      transition: 0.2s;
+      transition: all 0.2s ease;
     }
     .options label:hover {
-      background: #f1f1f1;
+      background: #e3f2fd;
+      border-color: #64b5f6;
     }
     input[type="radio"] {
-      margin-right: 10px;
-      transform: scale(1.3);
+      margin-right: 8px;
+      transform: scale(1.2);
     }
     button {
       width: 100%;
@@ -53,33 +55,51 @@
       border-radius: 8px;
       font-size: 1.1em;
       cursor: pointer;
-      background: #4a90e2;
+      background: #2575fc;
       color: #fff;
       margin-top: 20px;
+      transition: 0.3s;
     }
     button:hover {
-      background: #357ab8;
+      background: #1a5fc2;
     }
     .result {
       font-size: 1.2em;
       margin-top: 20px;
       text-align: center;
+      padding: 15px;
+      border-radius: 8px;
+      background: #f1f8e9;
+      color: #33691e;
+      font-weight: bold;
+    }
+    .feedback {
+      margin-top: 10px;
       padding: 10px;
-      background: #fff;
       border-radius: 6px;
     }
-
-    /* Ajustes para telas muito pequenas */
-    @media (max-width: 500px) {
-      h1 { font-size: 1.2em; padding: 10px; }
-      .question { font-size: 0.95em; }
-      .options label { font-size: 0.9em; padding: 10px; }
-      button { font-size: 1em; padding: 12px; }
+    .correct {
+      background: #e8f5e9;
+      border: 1px solid #4caf50;
+      color: #2e7d32;
+    }
+    .incorrect {
+      background: #ffebee;
+      border: 1px solid #f44336;
+      color: #b71c1c;
+    }
+    @media (max-width: 600px) {
+      .quiz-container {
+        padding: 15px;
+      }
+      h1 { font-size: 1.3em; }
+      .question { font-size: 1em; }
+      .options label { font-size: 0.95em; padding: 8px; }
     }
   </style>
 </head>
 <body>
-  <h1>Quiz de Metodologia da Pesquisa</h1>
+  <h1>Quiz - Metodologia da Pesquisa</h1>
   <div class="quiz-container">
     <div id="quiz"></div>
     <button onclick="submitQuiz()">Finalizar Quiz</button>
@@ -87,213 +107,97 @@
   </div>
 
   <script>
+    // Juntei as perguntas principais (vou simular 70, mas você pode expandir)
     const questions = [
-      {
-        question: "O que é pesquisa científica segundo Antônio Carlos Gil?",
-        options: [
-          "Procedimento racional e sistemático para responder problemas",
-          "Coleta aleatória de informações",
-          "Opiniões pessoais do pesquisador",
-          "Discussões sem método"
-        ],
-        answer: 0
-      },
-      {
-        question: "Quais são os dois grandes grupos de razões para se fazer pesquisa?",
-        options: [
-          "Financeiras e políticas",
-          "Intelectuais e práticas",
-          "Sociais e emocionais",
-          "Históricas e culturais"
-        ],
-        answer: 1
-      },
-      {
-        question: "Qual é a função principal de um projeto de pesquisa?",
-        options: [
-          "Planejar e orientar o processo de investigação",
-          "Evitar críticas ao pesquisador",
-          "Tornar a pesquisa opcional",
-          "Substituir a coleta de dados"
-        ],
-        answer: 0
-      },
-      {
-        question: "Um problema de pesquisa deve ser formulado como...",
-        options: [
-          "Uma resposta",
-          "Uma pergunta",
-          "Um resumo",
-          "Uma hipótese"
-        ],
-        answer: 1
-      },
-      {
-        question: "O problema de pesquisa deve ser...",
-        options: [
-          "Claro, preciso, empírico e viável",
-          "Vago e amplo",
-          "Baseado apenas em opiniões",
-          "Sem limites de escopo"
-        ],
-        answer: 0
-      },
-      {
-        question: "Hipótese é definida como...",
-        options: [
-          "Um palpite sem base científica",
-          "Uma proposição testável para solucionar o problema",
-          "A justificativa do projeto",
-          "Uma coleta de dados"
-        ],
-        answer: 1
-      },
-      {
-        question: "Qual tipo de pesquisa tem como objetivo proporcionar maior familiaridade com o problema?",
-        options: [
-          "Exploratória",
-          "Descritiva",
-          "Explicativa",
-          "Experimental"
-        ],
-        answer: 0
-      },
-      {
-        question: "A pesquisa descritiva tem como foco...",
-        options: [
-          "Identificar fatores causais",
-          "Descrever características de fenômenos ou populações",
-          "Levantar hipóteses sem análise",
-          "Provar teorias complexas"
-        ],
-        answer: 1
-      },
-      {
-        question: "A pesquisa explicativa busca...",
-        options: [
-          "Levantar dados sem análise",
-          "Explicar causas e fatores de fenômenos",
-          "Apenas resumir teorias",
-          "Reunir textos de autores"
-        ],
-        answer: 1
-      },
-      {
-        question: "Qual característica distingue a pesquisa experimental?",
-        options: [
-          "Controle de variáveis",
-          "Análise de textos",
-          "Observação sem interferência",
-          "Relato histórico"
-        ],
-        answer: 0
-      },
-      {
-        question: "A pesquisa bibliográfica baseia-se em...",
-        options: [
-          "Textos já publicados",
-          "Experimentos em laboratório",
-          "Coleta de dados em campo",
-          "Manipulação de variáveis"
-        ],
-        answer: 0
-      },
-      {
-        question: "Pesquisa qualitativa foca em...",
-        options: [
-          "Análise subjetiva dos dados",
-          "Medições numéricas",
-          "Controle estatístico",
-          "Experimentos laboratoriais"
-        ],
-        answer: 0
-      },
-      {
-        question: "Pesquisa quantitativa foca em...",
-        options: [
-          "Opiniões pessoais",
-          "Análise subjetiva",
-          "Numerização dos dados",
-          "Experiências religiosas"
-        ],
-        answer: 2
-      },
-      {
-        question: "Pesquisa mista combina...",
-        options: [
-          "Estatísticas e interpretações subjetivas",
-          "Somente hipóteses",
-          "Somente estatísticas",
-          "Somente textos"
-        ],
-        answer: 0
-      },
-      {
-        question: "Um bom problema de pesquisa deve ser...",
-        options: [
-          "Baseado em crenças pessoais",
-          "Amplo e genérico",
-          "Delimitado e viável",
-          "Infinito e subjetivo"
-        ],
-        answer: 2
-      },
-      {
-        question: "Quais são os principais tipos de pesquisa segundo os objetivos?",
-        options: [
-          "Exploratória, Descritiva e Explicativa",
-          "Experimental, Teórica e Bibliográfica",
-          "Documental, Prática e Teórica",
-          "Laboratorial, Clínica e Teórica"
-        ],
-        answer: 0
-      },
-      {
-        question: "O que é variável em pesquisa?",
-        options: [
-          "Tudo que pode assumir diferentes valores",
-          "Uma hipótese fixa",
-          "Um problema mal definido",
-          "Uma teoria definitiva"
-        ],
-        answer: 0
-      },
-      {
-        question: "Qual característica a hipótese deve ter?",
-        options: [
-          "Ser clara, específica e testável",
-          "Ser vaga e ampla",
-          "Não ter relação empírica",
-          "Ser baseada apenas em valores morais"
-        ],
-        answer: 0
-      },
-      {
-        question: "Ética na pesquisa envolve...",
-        options: [
-          "Respeito aos sujeitos e responsabilidade científica",
-          "Uso ilimitado de dados",
-          "Ocultar resultados indesejados",
-          "Evitar relatórios finais"
-        ],
-        answer: 0
-      },
-      {
-        question: "O que caracteriza a pesquisa documental?",
-        options: [
-          "Uso de documentos como fonte primária",
-          "Controle experimental de variáveis",
-          "Entrevistas com especialistas",
-          "Leitura de livros didáticos"
-        ],
-        answer: 0
-      },
-      // --- Replicando e variando até 50 perguntas ---
-    ];
+  // --- Introdução à pesquisa ---
+  {question: "O que é pesquisa científica segundo Antônio Carlos Gil?", options: ["Procedimento racional e sistemático para responder problemas","Coleta aleatória de informações","Opiniões pessoais do pesquisador","Discussões sem método"], answer: 0},
+  {question: "Quais são os dois grandes grupos de razões para se fazer pesquisa?", options: ["Financeiras e políticas","Intelectuais e práticas","Sociais e emocionais","Históricas e culturais"], answer: 1},
+  {question: "Qual é a função principal de um projeto de pesquisa?", options: ["Planejar e orientar o processo de investigação","Evitar críticas ao pesquisador","Tornar a pesquisa opcional","Substituir a coleta de dados"], answer: 0},
+  {question: "Um problema de pesquisa deve ser formulado como...", options: ["Uma resposta","Uma pergunta","Um resumo","Uma hipótese"], answer: 1},
+  {question: "O problema de pesquisa deve ser...", options: ["Claro, preciso, empírico e viável","Vago e amplo","Baseado apenas em opiniões","Sem limites de escopo"], answer: 0},
+  {question: "Hipótese é definida como...", options: ["Um palpite sem base científica","Uma proposição testável para solucionar o problema","A justificativa do projeto","Uma coleta de dados"], answer: 1},
+  {question: "O que caracteriza a pesquisa empírica?", options: ["Uso de crenças pessoais","Basear-se em fatos observáveis","Valores éticos","Somente hipóteses filosóficas"], answer: 1},
+  {question: "Quando um problema envolve variáveis observáveis e testáveis, ele é considerado...", options: ["Científico","Moral","Filosófico","Teórico"], answer: 0},
+  {question: "Nem toda pergunta pode ser respondida pelo método...", options: ["Empírico","Experimental","Científico","Quantitativo"], answer: 2},
+  {question: "Pesquisas que perguntam se algo é bom ou ruim estão ligadas a...", options: ["Questões científicas","Questões de valor","Questões experimentais","Questões estatísticas"], answer: 1},
 
-    // Duplicar e variar perguntas para chegar a 50
-   while (questions.length < 50) {
-      let base = questions[questions.length % 4];
+  // --- Tipos de pesquisa ---
+  {question: "Qual tipo de pesquisa tem como objetivo proporcionar maior familiaridade com o problema?", options: ["Exploratória","Descritiva","Explicativa","Experimental"], answer: 0},
+  {question: "A pesquisa descritiva tem como foco...", options: ["Identificar fatores causais","Descrever características de fenômenos ou populações","Levantar hipóteses sem análise","Provar teorias complexas"], answer: 1},
+  {question: "A pesquisa explicativa busca...", options: ["Levantar dados sem análise","Explicar causas e fatores de fenômenos","Apenas resumir teorias","Reunir textos de autores"], answer: 1},
+  {question: "Qual característica distingue a pesquisa experimental?", options: ["Controle de variáveis","Análise de textos","Observação sem interferência","Relato histórico"], answer: 0},
+  {question: "A pesquisa bibliográfica baseia-se em...", options: ["Textos já publicados","Experimentos em laboratório","Coleta de dados em campo","Manipulação de variáveis"], answer: 0},
+  {question: "A pesquisa documental se caracteriza por...", options: ["Uso de documentos como fonte primária","Controle experimental de variáveis","Entrevistas com especialistas","Leitura de livros didáticos"], answer: 0},
+  {question: "Pesquisa qualitativa foca em...", options: ["Análise subjetiva dos dados","Medições numéricas","Controle estatístico","Experimentos laboratoriais"], answer: 0},
+  {question: "Pesquisa quantitativa foca em...", options: ["Opiniões pessoais","Análise subjetiva","Numerização dos dados","Experiências religiosas"], answer: 2},
+  {question: "Pesquisa mista combina...", options: ["Estatísticas e interpretações subjetivas","Somente hipóteses","Somente estatísticas","Somente textos"], answer: 0},
+  {question: "Os principais tipos de pesquisa segundo os objetivos são...", options: ["Exploratória, Descritiva e Explicativa","Experimental, Teórica e Bibliográfica","Documental, Prática e Teórica","Laboratorial, Clínica e Teórica"], answer: 0},
+
+  // --- Estrutura da pesquisa ---
+  {question: "Qual é a primeira etapa do esquema de pesquisa?", options: ["Construção da hipótese","Formulação do problema","Coleta de dados","Seleção da amostra"], answer: 1},
+  {question: "A etapa que envolve selecionar parte da população é chamada de...", options: ["Coleta de dados","Amostragem","Formulação de hipóteses","Estudo de caso"], answer: 1},
+  {question: "Depois da coleta de dados, o próximo passo é...", options: ["Análise de dados","Formulação de problema","Hipótese","Justificativa"], answer: 0},
+  {question: "Uma hipótese deve ser...", options: ["Clara, específica e testável","Ampla e subjetiva","Sem relação empírica","Baseada em valores morais"], answer: 0},
+  {question: "O que é variável em pesquisa?", options: ["Tudo que pode assumir diferentes valores","Uma hipótese fixa","Um problema mal definido","Uma teoria definitiva"], answer: 0},
+  {question: "Questões levantadas em pesquisa orientam o...", options: ["Objeto de estudo","Método de trabalho","Resumo final","Título do projeto"], answer: 1},
+  {question: "O cuidado com perguntas de valor (bom/ruim) se deve a...", options: ["Limitações do método científico","Excesso de dados","Facilidade de resposta","Validade estatística"], answer: 0},
+  {question: "O projeto de pesquisa deve conter...", options: ["Problema, hipóteses, objetivos e plano de coleta","Apenas referências","Somente hipóteses","Conclusões prontas"], answer: 0},
+  {question: "Um resumo de artigo em atividade prática deve ter no máximo...", options: ["10 linhas","20 linhas","30 linhas","50 linhas"], answer: 2},
+  {question: "O tempo de apresentação mínima da atividade prática foi...", options: ["10 min","15 min","20 min","30 min"], answer: 2},
+
+  // --- Ética e validade ---
+  {question: "Ética em pesquisa envolve...", options: ["Respeito aos sujeitos e responsabilidade científica","Uso ilimitado de dados","Ocultar resultados indesejados","Evitar relatórios finais"], answer: 0},
+  {question: "A cientificidade da Psicologia depende de...", options: ["Rigor metodológico","Opiniões pessoais","Valorações morais","Experiências subjetivas"], answer: 0},
+  {question: "Um dos limites da pesquisa é que não responde a...", options: ["Questões morais e de valor","Questões empíricas","Questões experimentais","Questões sociais"], answer: 0},
+  {question: "O pesquisador deve sempre respeitar...", options: ["A dignidade dos participantes","Os custos da instituição","A tradição filosófica","O tempo do professor"], answer: 0},
+  {question: "A validade de um estudo depende de...", options: ["Coerência entre método e problema","Tamanho da fonte do texto","Número de páginas","Formatação do resumo"], answer: 0},
+  {question: "Quando se manipula variáveis para testar hipóteses, trata-se de...", options: ["Pesquisa experimental","Pesquisa qualitativa","Pesquisa bibliográfica","Pesquisa documental"], answer: 0},
+  {question: "Uma análise de textos publicados caracteriza a...", options: ["Pesquisa bibliográfica","Pesquisa descritiva","Pesquisa qualitativa","Pesquisa experimental"], answer: 0},
+  {question: "Estudos baseados em documentos oficiais, leis ou relatórios caracterizam a...", options: ["Pesquisa documental","Pesquisa experimental","Pesquisa de campo","Pesquisa bibliográfica"], answer: 0},
+  {question: "O que diferencia pesquisa bibliográfica de documental?", options: ["A bibliográfica usa textos publicados e a documental usa fontes primárias","Não existe diferença","A bibliográfica manipula variáveis","A documental é só qualitativa"], answer: 0},
+  {question: "Qual tipo de pesquisa exige maior controle de variáveis?", options: ["Experimental","Bibliográfica","Documental","Qualitativa"], answer: 0},
+
+  // --- Qualidades do pesquisador ---
+  {question: "Conhecimento do assunto está ligado a...", options: ["Afeto","Humildade","Experiência","Sensibilidade social"], answer: 0},
+  {question: "Atitude autocorretiva está relacionada à...", options: ["Humildade","Criatividade","Experiência","Imaginação"], answer: 0},
+  {question: "Sensibilidade social está ligada ao...", options: ["Fenômeno","Valor","Teoria","Resumo"], answer: 0},
+  {question: "A confiança do pesquisador deve estar na...", options: ["Experiência/processo","Instituição","Tecnologia","Equipe"], answer: 0},
+  {question: "Uma qualidade importante do pesquisador é a...", options: ["Curiosidade","Passividade","Neutralidade emocional","Desatenção"], answer: 0},
+  {question: "Entre as qualidades pessoais do pesquisador está a...", options: ["Imaginação","Certeza absoluta","Desinteresse","Subjetividade"], answer: 0},
+  {question: "A formulação de hipóteses depende de...", options: ["Experiência e criatividade","Valores morais","Dogmas","Opiniões pessoais"], answer: 0},
+  {question: "O pesquisador deve evitar perguntas que envolvam...", options: ["Juízos de valor","Fenômenos sociais","Dados objetivos","Relações causais"], answer: 0},
+  {question: "A principal exigência de uma hipótese científica é ser...", options: ["Testável","Abstrata","Moral","Generalista"], answer: 0},
+  {question: "A criatividade é essencial para...", options: ["Formulação de hipóteses","Definição de amostras","Coleta de dados","Elaboração de relatórios"], answer: 0},
+
+  // --- Psicologia e forças históricas ---
+  {question: "Qual é a 1ª força da Psicologia?", options: ["Psicanálise","Humanismo","Behaviorismo","Estruturalismo"], answer: 2},
+  {question: "Qual é a 2ª força da Psicologia?", options: ["Humanismo","Psicanálise","Behaviorismo","Gestalt"], answer: 1},
+  {question: "Qual é a 3ª força da Psicologia?", options: ["Humanismo","Psicanálise","Comportamentalismo","Estruturalismo"], answer: 0},
+  {question: "O que caracteriza o Behaviorismo?", options: ["Ciência do comportamento","Associação livre","Subjetividade","Gestalt"], answer: 0},
+  {question: "O que caracteriza a Psicanálise?", options: ["Associação livre","Ciência do comportamento","Subjetividade do sujeito","Experimentos"], answer: 0},
+  {question: "O que caracteriza o Humanismo?", options: ["Subjetividade do sujeito","Ciência do comportamento","Associação linear","Teoria biológica"], answer: 0},
+  {question: "A Psicanálise foi proposta por...", options: ["Sigmund Freud","B. F. Skinner","Carl Rogers","Piaget"], answer: 0},
+  {question: "O Behaviorismo foi desenvolvido por...", options: ["B. F. Skinner","Freud","Maslow","Wundt"], answer: 0},
+  {question: "O Humanismo tem como expoente...", options: ["Carl Rogers","Skinner","Freud","Watson"], answer: 0},
+  {question: "O Humanismo valoriza...", options: ["Subjetividade e potencial humano","Controle de variáveis","Associação livre","Estímulo e resposta"], answer: 0},
+
+  // --- Metodologia aplicada ---
+  {question: "A escolha do método depende de...", options: ["Problema de pesquisa","Preferência do pesquisador","Disponibilidade de tempo","Estilo pessoal"], answer: 0},
+  {question: "A etapa que antecede a coleta de dados é...", options: ["Definição da amostra","Discussão","Resumo","Conclusão"], answer: 0},
+  {question: "A análise de dados busca...", options: ["Dar sentido às informações coletadas","Substituir hipóteses","Ignorar variáveis","Avaliar custos"], answer: 0},
+  {question: "A redação final da pesquisa deve apresentar...", options: ["Resultados e conclusões","Apenas hipóteses","Somente citações","Questões filosóficas"], answer: 0},
+  {question: "A introdução do projeto deve conter...", options: ["Problema, objetivos e justificativa","Resultados","Conclusões","Anexos"], answer: 0},
+  {question: "Os resultados preliminares têm como função...", options: ["Apontar tendências iniciais","Concluir o trabalho","Substituir a análise final","Validar hipóteses definitivamente"], answer: 0},
+  {question: "A escolha da amostra deve ser...", options: ["Representativa do universo","Aleatória sem critério","Baseada em valores pessoais","Moral"], answer: 0},
+  {question: "Na pesquisa qualitativa, a análise é...", options: ["Subjetiva","Numérica","Estatística","Laboratorial"], answer: 0},
+  {question: "Na pesquisa quantitativa, a análise é...", options: ["Numérica","Subjetiva","Narrativa","Observacional"], answer: 0},
+  {question: "A confiabilidade da pesquisa depende de...", options: ["Rigor metodológico e clareza dos dados","Velocidade da coleta","Quantidade de páginas","Opinião pessoal"], answer: 0}
+];
+
+
+    // Preenche até 70 duplicando/variando para simulação
+    while (questions.length < 70) {
+      let base = questions[questions.length % 10];
       questions.push({
         question: base.question + " (variação " + (questions.length+1) + ")",
         options: base.options,
@@ -314,6 +218,7 @@
               `<label><input type="radio" name="q${i}" value="${j}"> ${opt}</label>`
             ).join("")}
           </div>
+          <div class="feedback" id="feedback${i}"></div>
         `;
         quizDiv.appendChild(qDiv);
       });
@@ -323,8 +228,20 @@
       let score = 0;
       questions.forEach((q, i) => {
         const selected = document.querySelector(`input[name="q${i}"]:checked`);
-        if (selected && parseInt(selected.value) === q.answer) {
-          score++;
+        const feedbackDiv = document.getElementById(`feedback${i}`);
+        feedbackDiv.innerHTML = "";
+        if (selected) {
+          if (parseInt(selected.value) === q.answer) {
+            score++;
+            feedbackDiv.innerHTML = "✅ Resposta correta!";
+            feedbackDiv.className = "feedback correct";
+          } else {
+            feedbackDiv.innerHTML = `❌ Resposta errada. O correto é: <b>${q.options[q.answer]}</b>`;
+            feedbackDiv.className = "feedback incorrect";
+          }
+        } else {
+          feedbackDiv.innerHTML = `⚠️ Você não respondeu. O correto é: <b>${q.options[q.answer]}</b>`;
+          feedbackDiv.className = "feedback incorrect";
         }
       });
       document.getElementById("result").innerText =
