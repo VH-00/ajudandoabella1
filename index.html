@@ -108,45 +108,42 @@
 
   <script>
     // Juntei as perguntas principais (vou simular 70, mas você pode expandir)
-   const questions = [
-  // --- CRAS ---
-  {question: "O que é o CRAS?", options: ["Unidade pública do SUAS, principal porta de entrada da assistência social","Hospital de média complexidade","Serviço de urgência","Organização privada"], answer: 0},
-  {question: "O CRAS atua prioritariamente em...", options: ["Áreas de vulnerabilidade social","Hospitais de alta complexidade","Unidades prisionais","Escolas privadas"], answer: 0},
-  {question: "Um dos objetivos do CRAS é...", options: ["Fortalecer vínculos familiares e comunitários","Realizar cirurgias","Distribuir medicamentos","Atender apenas idosos"], answer: 0},
-  {question: "O atendimento do CRAS é...", options: ["Territorializado e próximo da população","Apenas hospitalar","Somente online","Exclusivo de emergência"], answer: 0},
-  {question: "As formas de entrada no CRAS podem ser...", options: ["Demanda espontânea ou encaminhamentos","Somente por ordem judicial","Apenas via hospitais","Exclusivamente virtuais"], answer: 0},
-  {question: "O CREPOP tem como função...", options: ["Estabelecer diretrizes técnicas para atuação do psicólogo no CRAS","Gerir hospitais","Distribuir remédios","Atender emergências"], answer: 0},
-  {question: "Um dos desafios enfrentados no CRAS é...", options: ["Resistência inicial das famílias","Excesso de recursos","Alta aceitação imediata","Pouca demanda"], answer: 0},
-  {question: "A sobrecarga emocional no CRAS ocorre devido a...", options: ["Complexidade e gravidade dos casos","Excesso de férias","Poucos atendimentos","Baixa demanda"], answer: 0},
-  {question: "Uma estratégia para superar desafios no CRAS é...", options: ["Formação continuada e trabalho em rede","Atuação isolada","Atendimento apenas clínico","Evitar contato comunitário"], answer: 0},
-  {question: "Um impacto positivo da atuação psicológica no CRAS é...", options: ["Fortalecimento da autonomia familiar e acesso a direitos","Exclusão de famílias vulneráveis","Redução da autonomia","Menor acesso a serviços"], answer: 0},
-
-  // --- CREAS ---
-  {question: "O que é o CREAS?", options: ["Unidade pública que oferece serviços especializados e continuados","Clínica privada","Hospital psiquiátrico","ONG internacional"], answer: 0},
-  {question: "O público-alvo do CREAS são...", options: ["Famílias e indivíduos com direitos violados","Somente trabalhadores formais","Apenas idosos","Exclusivamente crianças"], answer: 0},
-  {question: "O objetivo central do CREAS é...", options: ["Fortalecer vínculos e enfrentar situações de risco","Distribuir alimentos","Fazer atendimentos hospitalares","Fornecer bolsas de estudo"], answer: 0},
-  {question: "Um dos serviços oferecidos pelo CREAS é...", options: ["PAEFI – Proteção e Atendimento Especializado a Famílias e Indivíduos","Transporte escolar","Venda de medicamentos","Clínica odontológica"], answer: 0},
-  {question: "No Vale do Paraíba, o CREAS atua em...", options: ["39 municípios, com diversidade urbano-rural","Apenas uma cidade","Somente capitais","Áreas industriais"], answer: 0},
-  {question: "Um desafio territorial do CREAS no Vale do Paraíba é...", options: ["Dificuldade de acesso em áreas rurais","Excesso de transporte público","Muitos hospitais privados","Pouca diversidade cultural"], answer: 0},
-  {question: "O trabalho no CREAS deve priorizar...", options: ["Autonomia familiar","Somente atendimentos clínicos","Controle estatal absoluto","Redução de vínculos comunitários"], answer: 0},
-  {question: "Na psicologia do CREAS, prioriza-se...", options: ["Atuação psicossocial, grupal e familiar","Somente atendimento clínico individual","Exames laboratoriais","Consultas rápidas"], answer: 0},
-  {question: "A atuação no CREAS deve envolver...", options: ["Articulação intersetorial com saúde, educação e justiça","Somente clínicas privadas","Exclusivamente ONGs","Apenas hospitais"], answer: 0},
-  {question: "O CREAS representa uma política pública...", options: ["Fundamental para garantia de direitos","Privada e restrita","Exclusiva de hospitais","Voltada apenas para idosos"], answer: 0},
-
-  // --- CAPS ---
-  {question: "O que são os CAPS?", options: ["Serviços de saúde abertos e comunitários, alternativa à internação","Hospitais privados","Consultórios particulares","UBS"], answer: 0},
-  {question: "O acesso ao CAPS pode ocorrer...", options: ["Espontaneamente ou por encaminhamentos","Somente por internação","Exclusivamente judicial","Via hospitais privados"], answer: 0},
-  {question: "Um dos principais objetivos do CAPS é...", options: ["Reinserção social de pessoas com transtornos mentais","Isolamento de pacientes","Exclusão social","Fornecer apenas remédios"], answer: 0},
-  {question: "O CAPS surgiu com...", options: ["Reforma Psiquiátrica de 2001","Constituição de 1988","Lei 8080/1990","Criação do INAMPS"], answer: 0},
-  {question: "O atendimento intensivo no CAPS é destinado a...", options: ["Pessoas em grave sofrimento psíquico","Somente exames rápidos","Consultas eventuais","Casos de baixa gravidade"], answer: 0},
-  {question: "O atendimento semi-intensivo no CAPS ocorre em média...", options: ["12 dias no mês","Todos os dias","1 vez ao ano","Apenas emergências"], answer: 0},
-  {question: "O atendimento não intensivo no CAPS ocorre até...", options: ["3 dias no mês","Todos os dias","12 dias no mês","Sem limite"], answer: 0},
-  {question: "O CAPSi é destinado a...", options: ["Crianças e adolescentes até 25 anos","Idosos acima de 60 anos","Mulheres","Somente dependentes químicos"], answer: 0},
-  {question: "O CAPS AD atende...", options: ["Pessoas com transtornos decorrentes do uso de álcool e drogas","Somente idosos","Crianças em idade escolar","Pacientes cardíacos"], answer: 0},
-  {question: "O CAPS I, II e III atendem...", options: ["População com transtornos mentais","Somente emergências físicas","Exclusivamente idosos","Somente dependentes químicos"], answer: 0},
-
-  // --- Movimento Antimanicomial e desafios ---
-  {question: "O lema do movimento an
+       const questions = [
+      // --- CRAS ---
+      {question: "O que é o CRAS?", options: ["Unidade pública do SUAS, principal porta de entrada da assistência social","Hospital de média complexidade","Serviço de urgência","Organização privada"], answer: 0},
+      {question: "O CRAS atua prioritariamente em...", options: ["Áreas de vulnerabilidade social","Hospitais de alta complexidade","Unidades prisionais","Escolas privadas"], answer: 0},
+      {question: "Um dos objetivos do CRAS é...", options: ["Fortalecer vínculos familiares e comunitários","Realizar cirurgias","Distribuir medicamentos","Atender apenas idosos"], answer: 0},
+      {question: "O atendimento do CRAS é...", options: ["Territorializado e próximo da população","Apenas hospitalar","Somente online","Exclusivo de emergência"], answer: 0},
+      {question: "As formas de entrada no CRAS podem ser...", options: ["Demanda espontânea ou encaminhamentos","Somente por ordem judicial","Apenas via hospitais","Exclusivamente virtuais"], answer: 0},
+      {question: "O CREPOP tem como função...", options: ["Estabelecer diretrizes técnicas para atuação do psicólogo no CRAS","Gerir hospitais","Distribuir remédios","Atender emergências"], answer: 0},
+      {question: "Um dos desafios enfrentados no CRAS é...", options: ["Resistência inicial das famílias","Excesso de recursos","Alta aceitação imediata","Pouca demanda"], answer: 0},
+      {question: "A sobrecarga emocional no CRAS ocorre devido a...", options: ["Complexidade e gravidade dos casos","Excesso de férias","Poucos atendimentos","Baixa demanda"], answer: 0},
+      {question: "Uma estratégia para superar desafios no CRAS é...", options: ["Formação continuada e trabalho em rede","Atuação isolada","Atendimento apenas clínico","Evitar contato comunitário"], answer: 0},
+      {question: "Um impacto positivo da atuação psicológica no CRAS é...", options: ["Fortalecimento da autonomia familiar e acesso a direitos","Exclusão de famílias vulneráveis","Redução da autonomia","Menor acesso a serviços"], answer: 0},
+    
+      // --- CREAS ---
+      {question: "O que é o CREAS?", options: ["Unidade pública que oferece serviços especializados e continuados","Clínica privada","Hospital psiquiátrico","ONG internacional"], answer: 0},
+      {question: "O público-alvo do CREAS são...", options: ["Famílias e indivíduos com direitos violados","Somente trabalhadores formais","Apenas idosos","Exclusivamente crianças"], answer: 0},
+      {question: "O objetivo central do CREAS é...", options: ["Fortalecer vínculos e enfrentar situações de risco","Distribuir alimentos","Fazer atendimentos hospitalares","Fornecer bolsas de estudo"], answer: 0},
+      {question: "Um dos serviços oferecidos pelo CREAS é...", options: ["PAEFI – Proteção e Atendimento Especializado a Famílias e Indivíduos","Transporte escolar","Venda de medicamentos","Clínica odontológica"], answer: 0},
+      {question: "No Vale do Paraíba, o CREAS atua em...", options: ["39 municípios, com diversidade urbano-rural","Apenas uma cidade","Somente capitais","Áreas industriais"], answer: 0},
+      {question: "Um desafio territorial do CREAS no Vale do Paraíba é...", options: ["Dificuldade de acesso em áreas rurais","Excesso de transporte público","Muitos hospitais privados","Pouca diversidade cultural"], answer: 0},
+      {question: "O trabalho no CREAS deve priorizar...", options: ["Autonomia familiar","Somente atendimentos clínicos","Controle estatal absoluto","Redução de vínculos comunitários"], answer: 0},
+      {question: "Na psicologia do CREAS, prioriza-se...", options: ["Atuação psicossocial, grupal e familiar","Somente atendimento clínico individual","Exames laboratoriais","Consultas rápidas"], answer: 0},
+      {question: "A atuação no CREAS deve envolver...", options: ["Articulação intersetorial com saúde, educação e justiça","Somente clínicas privadas","Exclusivamente ONGs","Apenas hospitais"], answer: 0},
+      {question: "O CREAS representa uma política pública...", options: ["Fundamental para garantia de direitos","Privada e restrita","Exclusiva de hospitais","Voltada apenas para idosos"], answer: 0},
+    
+      // --- CAPS ---
+      {question: "O que são os CAPS?", options: ["Serviços de saúde abertos e comunitários, alternativa à internação","Hospitais privados","Consultórios particulares","UBS"], answer: 0},
+      {question: "O acesso ao CAPS pode ocorrer...", options: ["Espontaneamente ou por encaminhamentos","Somente por internação","Exclusivamente judicial","Via hospitais privados"], answer: 0},
+      {question: "Um dos principais objetivos do CAPS é...", options: ["Reinserção social de pessoas com transtornos mentais","Isolamento de pacientes","Exclusão social","Fornecer apenas remédios"], answer: 0},
+      {question: "O CAPS surgiu com...", options: ["Reforma Psiquiátrica de 2001","Constituição de 1988","Lei 8080/1990","Criação do INAMPS"], answer: 0},
+      {question: "O atendimento intensivo no CAPS é destinado a...", options: ["Pessoas em grave sofrimento psíquico","Somente exames rápidos","Consultas eventuais","Casos de baixa gravidade"], answer: 0},
+      {question: "O atendimento semi-intensivo no CAPS ocorre em média...", options: ["12 dias no mês","Todos os dias","1 vez ao ano","Apenas emergências"], answer: 0},
+      {question: "O atendimento não intensivo no CAPS ocorre até...", options: ["3 dias no mês","Todos os dias","12 dias no mês","Sem limite"], answer: 0},
+      {question: "O CAPSi é destinado a...", options: ["Crianças e adolescentes até 25 anos","Idosos acima de 60 anos","Mulheres","Somente dependentes químicos"], answer: 0},
+      {question: "O CAPS AD atende...", options: ["Pessoas com transtornos decorrentes do uso de álcool e drogas","Somente idosos","Crianças em idade escolar","Pacientes cardíacos"], answer: 0},
+      {question: "O CAPS I, II e III atendem...", options: ["População com transtornos mentais","Somente emergências físicas","Exclusivamente idosos","Somente dependentes químicos"], answer: 0},
 
 
     // Preenche até 70 duplicando/variando para simulação
@@ -206,6 +203,7 @@
   </script>
 </body>
 </html>
+
 
 
 
